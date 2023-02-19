@@ -1,8 +1,12 @@
 ﻿using Kaizen_Case2.Models;
+using System.Reflection;
 using System.Text.Json;
 
 #region Parsing
-string receipt = File.ReadAllText(@"./response.json").Trim();
+
+string bin = Environment.CurrentDirectory;
+string filePath = Directory.GetParent(bin).Parent.Parent.FullName+"\\Files\\response.json";
+string receipt = File.ReadAllText(filePath).Trim();
 var lines = JsonSerializer.Deserialize<List<Line>>(receipt);
 #endregion
 string result = "";
